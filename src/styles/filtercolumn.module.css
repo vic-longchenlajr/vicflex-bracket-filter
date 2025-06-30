@@ -1,0 +1,56 @@
+.filterContainer {
+  position: fixed;
+  top: 13vh; /* below navbar */
+  left: 0;
+  height: calc(100vh - 10vh);
+  width: 10vw;
+  overflow-y: auto;
+  background-color: #f8f8f8;
+  padding: 1rem;
+  z-index: 999;
+  border-right: 1px solid #ccc;
+}
+
+.filterSection {
+  margin-bottom: 1rem;
+}
+
+.filterToggle {
+  background: none;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  padding: 0.5rem 0;
+}
+
+.optionList {
+  list-style: none;
+  padding-left: 1rem;
+  max-height: 100vh; /* Keep it scrollable if long */
+  overflow-y: auto;
+  margin: 0;
+}
+
+.optionItem {
+  cursor: pointer;
+  padding: 0.25rem 0;
+}
+
+.optionItem:hover {
+  text-decoration: underline;
+}
+
+.selected {
+  font-weight: bold;
+  color: #ff9900;
+}
+
+.triangle {
+  display: inline-block;
+  width: 1rem;
+  text-align: center;
+  margin-right: 0.25rem;
+  color: #333;
+}

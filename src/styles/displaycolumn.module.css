@@ -1,0 +1,13 @@
+.displayWrapper {
+  margin-top: 15vh;
+}
+
+/* Single definition with grid rows added */
+.displayArea {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+  grid-auto-rows: auto;
+  gap: 1.5rem;
+  padding: 1rem;
+  margin-left: 10vw;
+}

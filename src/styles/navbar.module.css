@@ -1,0 +1,16 @@
+.navBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 13vh;
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  z-index: 1000;
+  padding-left: 1rem;
+  font-size: 25px;
+}
