@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>VicFlex Bracket Filter v0.1.2</title>
+        <title>VicFlex Bracket Filter v0.1.3</title>
       </Head>
       <Navbar />
       <div className={styles.body}>

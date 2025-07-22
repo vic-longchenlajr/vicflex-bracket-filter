@@ -12,12 +12,6 @@
   overflow: hidden;
 }
 
-/* Expanded 2x2 behavior in grid layout */
-.expanded {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-
 /* Layout for top half */
 .topRow {
   display: flex;
@@ -67,15 +61,49 @@
   margin-top: 1rem;
 }
 
-.image {
-  /* max-height: 250px; */
-  max-width: 100%;
-  object-fit: contain;
-  display: inline-block;
-}
-
 /* Expand button */
 .expandIcon {
   align-self: flex-end;
   cursor: pointer;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 1500px; /* or even 1200px if you want */
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.contractIcon {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.modalContent .image {
+  max-height: 500px;
 }

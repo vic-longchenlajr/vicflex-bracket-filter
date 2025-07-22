@@ -12,7 +12,7 @@ const Navbar = () => {
           height={84}
           className={styles.logo}
         ></Image>
-        <h3>Bracket Filter v0.1.2</h3>
+        <h3>Bracket Filter v0.1.3</h3>
       </div>
     </>
   );
