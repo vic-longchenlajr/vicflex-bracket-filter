@@ -1,0 +1,127 @@
+.green {
+  color: #00b050;
+}
+
+.red {
+  color: #ff0000;
+}
+
+.orange {
+  color: #e97132;
+}
+
+.blue {
+  color: #4e95d9;
+}
+
+.purple {
+  color: #d86ecc;
+}
+
+.body {
+  padding-top: 13vh;
+}
+
+/* Layout */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+  padding-top: 17vh;
+}
+.hero h1 {
+  margin: 0 0 8px;
+}
+
+/* Quick start cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+.card {
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  padding: 16px;
+  background: #fff;
+}
+.tip {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Examples */
+.example {
+  margin-top: 32px;
+}
+.figure {
+  margin: 0;
+  display: grid;
+  justify-items: center; /* center image + caption */
+  gap: 8px;
+}
+
+/* Prevent blurry upscaling: clamp image width and center it */
+.guideImage {
+  width: 95%;
+  max-width: 900px; /* <= adjust to your asset's real pixel width */
+  height: auto;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  image-rendering: auto; /* let browser choose best; avoids pixelation */
+}
+
+/* Caption list */
+.legend ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+.pin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #aaa;
+  margin-right: 8px;
+  font-size: 12px;
+}
+
+/* D-value callout box with even padding + subtle background */
+.callout {
+  margin-top: 32px;
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  background: #fafafa; /* slightly distinct from page */
+  padding: 16px; /* even padding around title and content */
+}
+.callout h2 {
+  margin: 0 0 10px;
+}
+.calloutBody {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 16px;
+  align-items: center;
+}
+.dImage {
+  width: 200px;
+  height: auto;
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  .calloutBody {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hint {
+  opacity: 0.7;
+  font-weight: 500;
+}

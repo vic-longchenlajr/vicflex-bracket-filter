@@ -33,3 +33,55 @@
   flex-direction: row;
   gap: 1vw;
 }
+
+/* 1) Center only below the navbar */
+.modalOverlay {
+  position: fixed;
+  top: 13vh; /* start below navbar */
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 13vh); /* available space */
+  display: grid;
+  place-items: center; /* perfect centering */
+  padding: 2vh 2vw; /* breathing room on small screens */
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.6);
+  box-sizing: border-box;
+  z-index: 999;
+}
+
+/* 2) Card that never exceeds the viewport, and can scroll if needed */
+.modalContent {
+  background: #fff;
+  border-radius: 20px;
+  padding: 1rem;
+  max-width: min(1100px, 92vw);
+  max-height: 100%; /* capped by overlay height */
+  overflow: auto; /* <- prevents clipping on short screens */
+  -webkit-overflow-scrolling: touch; /* smooth scroll on mobile */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 3) Image scales to fit the card */
+.modalImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain; /* no cropping or stretching */
+}
+
+/* Optional: tighten padding and radius on short viewports */
+@media (max-height: 800px) {
+  .modalContent {
+    padding: 0.75rem;
+    border-radius: 14px;
+  }
+}
+.modalLink {
+  color: #0070f3;
+  cursor: pointer;
+  text-decoration: underline;
+}

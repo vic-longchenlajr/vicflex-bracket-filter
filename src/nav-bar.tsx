@@ -1,20 +1,41 @@
-import Image from "next/image"; // Import Image for optimized images in Next.js
-import styles from "./styles/navbar.module.css"; // Import CSS module
+import Image from "next/image";
+import Link from "next/link";
+import styles from "./styles/navbar.module.css";
 
 const Navbar = () => {
+  const imageSrc =
+    "https://vortex-bom.victaulicmobile.com/us-config/bracket-filter/resources/";
+
   return (
-    <>
-      <div className={styles.navBar}>
+    <div className={styles.navBar}>
+      {/* Logo + Title */}
+      <div className={styles.brand}>
         <Image
-          src="logo_vicflex.png"
+          src={imageSrc + "logo_vicflex.png"}
           alt="VicFlex Logo"
           width={126}
           height={84}
           className={styles.logo}
-        ></Image>
-        <h3>Bracket Filter v0.1.3</h3>
+        />
+        <h3 className={styles.title}>Bracket Filter v0.1.4</h3>
       </div>
-    </>
+
+      {/* Navigation Menu */}
+      <nav className={styles.menu}>
+        <Link href="/" className={styles.navLink}>
+          Home
+        </Link>
+        <Link href="/help" className={styles.navLink}>
+          Help
+        </Link>
+        <a
+          href="mailto:applications.engineering@victaulic.com"
+          className={styles.navLink}
+        >
+          Contact
+        </a>
+      </nav>
+    </div>
   );
 };
 

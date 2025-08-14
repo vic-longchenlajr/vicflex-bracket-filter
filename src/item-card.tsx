@@ -20,6 +20,8 @@ const ItemCard = (props: ItemCardProps) => {
   const toggleExpand = () => {
     setExpanded((prev) => !prev);
   };
+  let imageSrc =
+    "https://vortex-bom.victaulicmobile.com/us-config/bracket-filter/resources/";
 
   return (
     <>
@@ -27,7 +29,7 @@ const ItemCard = (props: ItemCardProps) => {
         <div className={styles.topRow}>
           <div className={styles.info}>
             <img
-              src="expand.png"
+              src={imageSrc + "expand.png"}
               alt="Expand"
               className={styles.expandIcon}
               width={24}
@@ -92,7 +94,7 @@ const ItemCard = (props: ItemCardProps) => {
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src="contract.png"
+              src={imageSrc + "contract.png"}
               alt="Contract"
               className={styles.contractIcon}
               onClick={toggleExpand}
@@ -143,7 +145,7 @@ const ItemCard = (props: ItemCardProps) => {
             <div className={styles.imageWrapper}>
               <img
                 src={props.imageSrc}
-                alt="Bracket configuration"
+                alt={props.imageSrc}
                 className={styles.image}
               />
             </div>

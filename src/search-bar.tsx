@@ -3,12 +3,18 @@ import styles from "@/styles/searchbar.module.css";
 
 const Searchbar = ({ onSearch }: any) => {
   const [query, setQuery] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   const handleChange = (e: any) => {
     const value = e.target.value;
     setQuery(value);
-    onSearch?.(value); // Optional callback
+    onSearch?.(value);
   };
+
+  const toggleModal = () => setShowModal(!showModal);
+
+  let imageSrc =
+    "https://vortex-bom.victaulicmobile.com/us-config/bracket-filter/resources/dval.png";
 
   return (
     <div className={styles.searchDiv}>
@@ -20,14 +26,28 @@ const Searchbar = ({ onSearch }: any) => {
           placeholder='Search by "D" value'
           className={styles.searchInput}
         />
-        <span className={styles.searchIcon}>
-          <a className={styles.searchIcon}>🔍</a>
-        </span>
+        <span className={styles.searchIcon}>🔍</span>
       </div>
       <p>
-        "D" is the distance from the top of the ceiling grid to the finished
-        face of ceiling panel.
+        <a onClick={toggleModal} className={styles.modalLink}>
+          What's this?
+        </a>
       </p>
+
+      {showModal && (
+        <div className={styles.modalOverlay} onClick={toggleModal}>
+          <div
+            className={styles.modalContent}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={imageSrc}
+              alt='What is the "D" value?'
+              className={styles.modalImage}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

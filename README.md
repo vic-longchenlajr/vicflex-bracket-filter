@@ -1,12 +1,13 @@
 Updating deployment build + release for download
 
-1. npm run build
-2. npm run package
-3. You’ll see in /dist/:
+build + package
 
-   Bracket Calculator Setup.exe – Installer
-   Bracket Calculator.exe (inside /win-unpacked) – Portable version
+1. npm run make (this command runs build and make)
+2. navigate to out/make/zip/win32/x64
+3. extract to desktop or distribute vicflex-bracket-filter-win32-x64-x.x.x.zip
 
-   You can now:
-   Zip Bracket Calculator Setup.exe and send it to testers
-   Or run it directly yourself
+run
+
+1. unzip vicflex-bracket-filter-win32-x64-x.x.x.zip to desktop
+2. open folder
+3. double-click on vicflex-bracket-filter

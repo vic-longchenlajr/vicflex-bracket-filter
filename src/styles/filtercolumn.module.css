@@ -39,7 +39,10 @@
 }
 
 .optionItem:hover {
-  text-decoration: underline;
+  color: #ff9900;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .selected {
