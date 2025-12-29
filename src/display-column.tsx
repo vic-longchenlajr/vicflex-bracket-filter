@@ -26,13 +26,19 @@ interface BracketConfig {
  *  ========================= */
 const REMOTE_BASE =
   "https://vortex-bom.victaulicmobile.com/us-config/bracket-filter";
+
+const LOCAL_BASE = "/"; //public folder
+
 const DB_PATH = "database";
 const IMG_PATH = "screenshots";
 
 // change only the file name when you update the spreadsheet
-const FILE_NAME = "VicFlex-Bracket-Calculator-Values-8.14.25.xlsx";
-const REMOTE_XLSX_URL = `${REMOTE_BASE}/${DB_PATH}/${FILE_NAME}`;
-const REMOTE_IMG_BASE = `${REMOTE_BASE}/${IMG_PATH}/`;
+const FILE_NAME = "VicFlex-Bracket-Calculator-Values-10.28.25.xlsx";
+
+// const REMOTE_XLSX_URL = `${REMOTE_BASE}/${DB_PATH}/${FILE_NAME}`;
+// const REMOTE_IMG_BASE = `${REMOTE_BASE}/${IMG_PATH}/`;
+const LOCAL_XLSX_URL = `${LOCAL_BASE}${DB_PATH}/${FILE_NAME}`;
+const LOCAL_IMG_BASE = `${LOCAL_BASE}${IMG_PATH}/`;
 
 const SHEET_NAME = "Configs";
 
@@ -47,7 +53,7 @@ const Displaycolumn = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await importBracketConfigurations(
-        REMOTE_XLSX_URL,
+        LOCAL_XLSX_URL,
         SHEET_NAME
       );
       setBracketData(data);
@@ -195,7 +201,7 @@ export async function importBracketConfigurations(
           .split(/[/\\]+/)
           .pop() || "";
       const ts = Date.now();
-      const imageSrc = `${REMOTE_IMG_BASE}${screenshotFile}?nocache=${ts}`;
+      const imageSrc = `${LOCAL_IMG_BASE}${screenshotFile}?nocache=${ts}`;
 
       data.push({
         product: String(product).trim(),

@@ -13,11 +13,13 @@
 }
 
 /* Layout for top half */
+/* Allow a third column on wide screens */
 .topRow {
   display: flex;
   width: 100%;
   justify-content: space-between;
   gap: 1.5rem;
+  flex-wrap: wrap; /* helps on medium screens */
 }
 
 .info {
@@ -67,34 +69,53 @@
   cursor: pointer;
 }
 
+/* Match D value modal overlay style */
 .modalOverlay {
   position: fixed;
-  top: 0;
+  top: 13vh; /* start below navbar */
   left: 0;
   width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
+  height: calc(100vh - 13vh); /* available space */
+  display: grid;
+  place-items: center; /* perfect centering */
+  padding: 2vh 2vw; /* breathing room on small screens */
   backdrop-filter: blur(4px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.6);
+  box-sizing: border-box;
+  z-index: 1000; /* keep above content */
 }
 
+/* Match D value modal card sizing/scroll behavior */
 .modalContent {
-  background-color: white;
-  padding: 2rem;
+  background: #fff;
   border-radius: 20px;
-  width: 90%;
-  max-width: 1500px; /* or even 1200px if you want */
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
-  position: relative;
+  padding: 1rem;
+  max-width: min(1500px, 92vw);
+  max-height: 100%; /* capped by overlay height */
+  overflow: auto; /* allow scrolling on short screens */
+  -webkit-overflow-scrolling: touch;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+  position: relative;
 }
 
+/* Image in modal scales nicely */
+.modalContent .image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Optional: tighten padding for shorter viewports */
+@media (max-height: 800px) {
+  .modalContent {
+    padding: 0.75rem;
+    border-radius: 14px;
+  }
+}
 .contractIcon {
   position: absolute;
   top: 1rem;
@@ -106,4 +127,94 @@
 
 .modalContent .image {
   max-height: 500px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.notesPill {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.notesPill:hover {
+  background: rgba(0, 0, 0, 0.07);
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.modalHeader h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.closeBtn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* Allow a third column on wide screens */
+.topRow {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap; /* helps on medium screens */
+}
+
+.notesWrapper {
+  flex: 1;
+  align-self: flex-start;
+  min-width: 260px; /* prevents squish on mid-widths */
+}
+
+.notesCard {
+  border: 1px solid black;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+.notesCardHeader {
+  background-color: lightgrey;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+}
+
+.notesBody {
+  background-color: #f0f0f0;
+  padding: 0.5rem 1rem;
+}
+
+.notesList {
+  margin: 0.25rem 0 0;
+  padding-left: 18px;
+}
+
+/* Stack nicely on small screens */
+@media (max-width: 900px) {
+  .topRow {
+    flex-direction: column;
+  }
+  .dTableWrapper,
+  .notesWrapper {
+    width: 100%;
+  }
 }

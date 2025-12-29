@@ -17,7 +17,7 @@ const Navbar = () => {
           height={84}
           className={styles.logo}
         />
-        <h3 className={styles.title}>Bracket Filter v0.1.4</h3>
+        <h3 className={styles.title}>Bracket Filter v0.1.5</h3>
       </div>
 
       {/* Navigation Menu */}
