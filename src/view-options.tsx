@@ -1,5 +1,3 @@
-import styles from "./styles/viewoptions.module.css";
-
 const Viewoptions = () => {
   return (
     <>

@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import styles from "./styles/itemcard.module.css";
 
 interface ItemCardProps {
@@ -105,6 +105,13 @@ const ItemCard = (props: ItemCardProps) => {
     [props.product, props.sprinklerType]
   );
   const hasNotes = notes.length > 0;
+  useEffect(() => {
+    const open = expanded || notesOpen;
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [expanded, notesOpen]);
 
   return (
     <>
@@ -190,79 +197,74 @@ const ItemCard = (props: ItemCardProps) => {
             className={styles.modalContent}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className={styles.topRow}>
-              <div className={styles.info}>
-                <p>
-                  <strong>Product:</strong>{" "}
-                  <ProductLinks product={props.product} />
-                </p>
-                <p>
-                  <strong>Reducer:</strong> {props.reducer}
-                </p>
-                <p>
-                  <strong>Sprinkler Type:</strong> {props.sprinklerType}
-                </p>
-                <p>
-                  <strong>Bracket Type:</strong> {props.bracketType}
-                </p>
-                <p>
-                  <strong>Grid Type:</strong> {props.gridType}
-                </p>
-
-                {/* (Optional) Remove the Notes pill here to avoid duplication */}
-                {/* {hasNotes && (
-            <button ...>Notes</button>
-          )} */}
-              </div>
-              {/* NEW: Notes column in the popout */}
-              {hasNotes && (
-                <div className={styles.notesWrapper}>
-                  <div className={styles.notesCard}>
-                    <div className={styles.notesCardHeader}>
-                      Important Notes
-                    </div>
-                    <div className={styles.notesBody}>
-                      <ul className={styles.notesList}>
-                        {notes.map((n, i) => (
-                          <li key={i}>{n}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+            <div className={styles.modalHeaderArea}>
+              <div className={styles.modalHeaderRow}>
+                <div className={styles.modalInfo}>
+                  <p>
+                    <strong>Product:</strong>{" "}
+                    <ProductLinks product={props.product} />
+                  </p>
+                  <p>
+                    <strong>Reducer:</strong> {props.reducer}
+                  </p>
+                  <p>
+                    <strong>Sprinkler Type:</strong> {props.sprinklerType}
+                  </p>
+                  <p>
+                    <strong>Bracket Type:</strong> {props.bracketType}
+                  </p>
+                  <p>
+                    <strong>Grid Type:</strong> {props.gridType}
+                  </p>
                 </div>
-              )}
-
-              <div className={styles.dTableWrapper}>
-                <table className={styles.dTable}>
-                  <thead>
-                    <tr>
-                      <th>Units</th>
-                      <th>in.</th>
-                      <th>mm.</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>"D" Min:</td>
-                      <td>{props.dMinIn}</td>
-                      <td>{props.dMinMm}</td>
-                    </tr>
-                    <tr>
-                      <td>"D" Max:</td>
-                      <td>{props.dMaxIn}</td>
-                      <td>{props.dMaxMm}</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div className={styles.modalNotes}>
+                  {hasNotes ? (
+                    <div className={styles.notesCard}>
+                      <div className={styles.notesCardHeader}>
+                        Important Notes
+                      </div>
+                      <div className={styles.notesBody}>
+                        <ul className={styles.notesList}>
+                          {notes.map((n, i) => (
+                            <li key={i}>{n}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
+                <div className={styles.modalUnits}>
+                  <table className={styles.dTable}>
+                    <thead>
+                      <tr>
+                        <th>Units</th>
+                        <th>in.</th>
+                        <th>mm.</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>"D" Min:</td>
+                        <td>{props.dMinIn}</td>
+                        <td>{props.dMinMm}</td>
+                      </tr>
+                      <tr>
+                        <td>"D" Max:</td>
+                        <td>{props.dMaxIn}</td>
+                        <td>{props.dMaxMm}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
 
-            <div className={styles.imageWrapper}>
-              <img
-                src={props.imageSrc}
-                alt={props.imageSrc}
-                className={styles.image}
-              />
+              <div className={styles.modalImageArea}>
+                <img
+                  src={props.imageSrc}
+                  alt={props.imageSrc}
+                  className={styles.modalImage}
+                />
+              </div>
             </div>
           </div>
         </div>

@@ -1,17 +1,26 @@
+.searchDiv {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
 .searchBar {
   display: flex;
   align-items: center;
   border: 2px solid #ff9900;
-  border-radius: 20px;
+  border-radius: 999px;
   padding: 0.5rem 1rem;
   background-color: white;
-  flex: 1; /* <-- Add this */
-  max-width: 400px; /* Optional: limit size if too wide */
-  margin-left: 12vw;
+
+  flex: 1;
+  min-width: 240px;
+  max-width: 520px;
 }
 
 .searchInput {
-  flex-grow: 1;
+  flex: 1;
   border: none;
   outline: none;
   font-size: 1rem;
@@ -21,67 +30,74 @@
 .searchIcon {
   margin-left: 0.5rem;
   font-size: 1.2rem;
-}
-
-.searchIcon:hover {
   cursor: pointer;
 }
 
-.searchDiv {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  gap: 1vw;
+@media (max-width: 768px) {
+  .searchBar {
+    max-width: none;
+    width: 100%;
+    min-height: 44px;
+  }
 }
 
-/* 1) Center only below the navbar */
+/* Link button */
+.modalLinkBtn {
+  border: none;
+  background: transparent;
+  color: #0070f3;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 8px 0;
+}
+
+/* ---- Modal styles (match ItemCard expand modal) ---- */
 .modalOverlay {
   position: fixed;
-  top: 13vh; /* start below navbar */
   left: 0;
   width: 100vw;
-  height: calc(100vh - 13vh); /* available space */
+
+  top: var(--navbar-height);
+  height: calc(100vh - var(--navbar-height));
+
   display: grid;
-  place-items: center; /* perfect centering */
-  padding: 2vh 2vw; /* breathing room on small screens */
+  place-items: center;
+  padding: 2vh 2vw;
+
   backdrop-filter: blur(4px);
   background-color: rgba(0, 0, 0, 0.6);
   box-sizing: border-box;
-  z-index: 999;
+
+  z-index: 1000;
 }
 
-/* 2) Card that never exceeds the viewport, and can scroll if needed */
 .modalContent {
   background: #fff;
   border-radius: 20px;
   padding: 1rem;
+
   max-width: min(1100px, 92vw);
-  max-height: 100%; /* capped by overlay height */
-  overflow: auto; /* <- prevents clipping on short screens */
-  -webkit-overflow-scrolling: touch; /* smooth scroll on mobile */
+  max-height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* 3) Image scales to fit the card */
 .modalImage {
   display: block;
   width: 100%;
   height: auto;
   max-height: 100%;
-  object-fit: contain; /* no cropping or stretching */
+  object-fit: contain;
 }
 
-/* Optional: tighten padding and radius on short viewports */
+/* Optional: tighten padding/radius on short viewports (same idea as ItemCard) */
 @media (max-height: 800px) {
   .modalContent {
     padding: 0.75rem;
     border-radius: 14px;
   }
-}
-.modalLink {
-  color: #0070f3;
-  cursor: pointer;
-  text-decoration: underline;
 }

@@ -11,15 +11,17 @@
   transition: all 0.3s ease;
   overflow: hidden;
 }
-
-/* Layout for top half */
-/* Allow a third column on wide screens */
 .topRow {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  gap: 1.5rem;
-  flex-wrap: wrap; /* helps on medium screens */
+  display: grid;
+  grid-template-columns: 1fr 260px; /* info + units */
+  gap: 1rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .topRow {
+    grid-template-columns: 1fr; /* stack */
+  }
 }
 
 .info {
@@ -72,41 +74,34 @@
 /* Match D value modal overlay style */
 .modalOverlay {
   position: fixed;
-  top: 13vh; /* start below navbar */
-  left: 0;
-  width: 100vw;
-  height: calc(100vh - 13vh); /* available space */
+  inset: 0;
+  top: var(--navbar-height);
+  height: calc(100vh - var(--navbar-height));
+
   display: grid;
-  place-items: center; /* perfect centering */
-  padding: 2vh 2vw; /* breathing room on small screens */
+  place-items: center;
+
+  padding: 16px; /* simpler + consistent */
   backdrop-filter: blur(4px);
   background-color: rgba(0, 0, 0, 0.6);
   box-sizing: border-box;
-  z-index: 1000; /* keep above content */
+  z-index: 1000;
 }
 
-/* Match D value modal card sizing/scroll behavior */
 .modalContent {
   background: #fff;
   border-radius: 20px;
   padding: 1rem;
-  max-width: min(1500px, 92vw);
-  max-height: 100%; /* capped by overlay height */
-  overflow: auto; /* allow scrolling on short screens */
-  -webkit-overflow-scrolling: touch;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  position: relative;
-}
 
-/* Image in modal scales nicely */
-.modalContent .image {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 100%;
-  object-fit: contain;
+  width: min(1500px, 96vw);
+  max-height: calc(100vh - var(--navbar-height) - 32px);
+
+  display: grid;
+  grid-template-rows: auto 1fr; /* header then image */
+  gap: 1rem;
+
+  overflow: hidden; /* crucial: stops whole modal from scrolling */
+  position: relative;
 }
 
 /* Optional: tighten padding for shorter viewports */
@@ -124,11 +119,6 @@
   height: 24px;
   cursor: pointer;
 }
-
-.modalContent .image {
-  max-height: 500px;
-}
-
 .actions {
   display: flex;
   align-items: center;
@@ -170,19 +160,10 @@
   cursor: pointer;
 }
 
-/* Allow a third column on wide screens */
-.topRow {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  gap: 1.5rem;
-  flex-wrap: wrap; /* helps on medium screens */
-}
-
 .notesWrapper {
   flex: 1;
   align-self: flex-start;
-  min-width: 260px; /* prevents squish on mid-widths */
+  min-width: 0;
 }
 
 .notesCard {
@@ -210,11 +191,121 @@
 
 /* Stack nicely on small screens */
 @media (max-width: 900px) {
-  .topRow {
-    flex-direction: column;
-  }
   .dTableWrapper,
   .notesWrapper {
     width: 100%;
+  }
+}
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 260px; /* desktop default */
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .image {
+    max-height: 180px; /* mobile default */
+  }
+}
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.expandIcon {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .notesPill {
+    min-height: 32px;
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}
+@media (max-width: 768px) {
+  .dTable th,
+  .dTable td {
+    padding: 0.4rem 0.6rem;
+  }
+}
+
+.modalContent .image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: calc(100vh - var(--navbar-height) - 260px);
+  object-fit: contain;
+}
+.modalHeaderArea {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.modalImageArea {
+  overflow: auto; /* if needed, scroll the image area, not the whole modal */
+  -webkit-overflow-scrolling: touch;
+}
+
+.modalImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.modalImageArea .image {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.modalHeaderRow {
+  display: grid;
+  grid-template-columns: 1fr 340px 360px;
+  gap: 1rem;
+  align-items: start;
+  min-width: 0;
+}
+
+/* Keep the header compact */
+.modalInfo p {
+  margin: 0 0 6px 0;
+}
+
+/* Notes should scroll internally if long, not push image down */
+.modalNotes {
+  min-width: 0;
+}
+
+.modalNotes .notesBody {
+  max-height: 140px; /* keeps header from growing too tall */
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Responsive fallback */
+@media (max-width: 1100px) {
+  .modalHeaderRow {
+    grid-template-columns: 1fr 340px; /* drop notes to next row if cramped */
+  }
+  .modalNotes {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 900px) {
+  .modalHeaderRow {
+    grid-template-columns: 1fr;
+  }
+  .modalNotes .notesBody {
+    max-height: 180px;
   }
 }

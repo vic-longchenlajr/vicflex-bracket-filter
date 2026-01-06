@@ -126,15 +126,60 @@ const Displaycolumn = () => {
     },
     [bracketData, activeFilters]
   );
-
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  useEffect(() => {
+    document.body.style.overflow = filtersOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [filtersOpen]);
   return (
     <div className={styles.displayWrapper}>
-      <FilterColumn onFilter={handleFilterChange} />
-      <Searchbar onSearch={handleSearchChange} />
-      <div className={styles.displayArea}>
-        {filteredData.map((item) => (
-          <ItemCard {...item} key={item.key} />
-        ))}
+      <aside className={styles.sidebar}>
+        <FilterColumn onFilter={handleFilterChange} />
+      </aside>
+      {filtersOpen && (
+        <div
+          className={styles.drawerOverlay}
+          onClick={() => setFiltersOpen(false)}
+          role="presentation"
+        >
+          <div
+            className={styles.drawer}
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Filters"
+          >
+            <div className={styles.drawerHeader}>
+              <strong>Filters</strong>
+              <button type="button" onClick={() => setFiltersOpen(false)}>
+                Close
+              </button>
+            </div>
+
+            <FilterColumn onFilter={handleFilterChange} />
+          </div>
+        </div>
+      )}
+
+      <div className={styles.main}>
+        <div className={styles.topbar}>
+          <button
+            className={styles.mobileFilterBtn}
+            onClick={() => setFiltersOpen(true)}
+          >
+            Filters
+          </button>
+
+          <Searchbar onSearch={handleSearchChange} />
+        </div>
+
+        <div className={styles.displayArea}>
+          {filteredData.map((item) => (
+            <ItemCard {...item} key={item.key} />
+          ))}
+        </div>
       </div>
     </div>
   );

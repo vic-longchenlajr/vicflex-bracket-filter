@@ -18,3 +18,5 @@ run
 1. unzip vicflex-bracket-filter-win32-x64-x.x.x.zip to desktop
 2. open folder
 3. double-click on vicflex-bracket-filter
+
+Internal Deployment Contact: PPeter Briggeman

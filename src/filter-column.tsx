@@ -64,6 +64,17 @@ const FilterColumn = ({
   const isSelected = (category: string, option: string) => {
     return selected[category]?.has(option);
   };
+  const getHeader = (category: string) => {
+    if (expanded[category]) return { text: category, isSummary: false };
+
+    const set = selected[category];
+    if (!set || set.size === 0) return { text: category, isSummary: false };
+
+    const vals = Array.from(set);
+    if (vals.length === 1) return { text: vals[0], isSummary: true };
+
+    return { text: `${category} (${vals.length})`, isSummary: true };
+  };
 
   return (
     <div className={styles.filterContainer}>
@@ -77,7 +88,13 @@ const FilterColumn = ({
             <span className={styles.triangle}>
               {expanded[category] ? "▼" : "▶"}
             </span>{" "}
-            {category}
+            <span
+              className={`${styles.filterTitle} ${
+                getHeader(category).isSummary ? styles.selectedSummary : ""
+              }`}
+            >
+              {getHeader(category).text}
+            </span>{" "}
           </button>
           {expanded[category] && (
             <ul className={styles.optionList}>

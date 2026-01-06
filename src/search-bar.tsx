@@ -13,8 +13,7 @@ const Searchbar = ({ onSearch }: any) => {
 
   const toggleModal = () => setShowModal(!showModal);
 
-  let imageSrc =
-    "https://vortex-bom.victaulicmobile.com/us-config/bracket-filter/resources/dval.png";
+  let imageSrc = "/resources/dval.png";
 
   return (
     <div className={styles.searchDiv}>
@@ -28,11 +27,13 @@ const Searchbar = ({ onSearch }: any) => {
         />
         <span className={styles.searchIcon}>🔍</span>
       </div>
-      <p>
-        <a onClick={toggleModal} className={styles.modalLink}>
-          What's this?
-        </a>
-      </p>
+      <button
+        type="button"
+        onClick={toggleModal}
+        className={styles.modalLinkBtn}
+      >
+        What’s this?
+      </button>
 
       {showModal && (
         <div className={styles.modalOverlay} onClick={toggleModal}>

@@ -29,6 +29,10 @@ body {
   font-size: 14px;
 }
 
+body {
+  padding-top: var(--navbar-height);
+}
+
 button {
   font-family: forza-bold;
 }
@@ -53,4 +57,13 @@ img {
 
 input {
   font-family: forza-book;
+}
+:root {
+  --navbar-height: 84px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --navbar-height: 64px;
+  }
 }

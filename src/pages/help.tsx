@@ -1,16 +1,12 @@
 import Head from "next/head";
-import Link from "next/link";
 import styles from "@/styles/help.module.css";
 import Navbar from "@/nav-bar";
 
 const Pin = ({ n }: { n: number }) => <span className={styles.pin}>{n}</span>;
 
-const example1 =
-  "https://vortex-bom.victaulicmobile.com/us-config/bracket-filter/resources/example1.png";
-const example2 =
-  "https://vortex-bom.victaulicmobile.com/us-config/bracket-filter/resources/example2.png";
-const dval2 =
-  "https://vortex-bom.victaulicmobile.com/us-config/bracket-filter/resources/dval2.png";
+const example1 = "/resources/example1.png";
+const example2 = "/resources/example2.png";
+const dval2 = "/resources/dval2.png";
 
 export default function Help() {
   return (

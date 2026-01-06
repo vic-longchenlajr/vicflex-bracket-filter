@@ -17,17 +17,10 @@
 .purple {
   color: #d86ecc;
 }
-
-.body {
-  padding-top: 13vh;
-}
-
-/* Layout */
 .container {
-  max-width: 1100px;
+  max-width: 1200px; /* closer to your results layout feel */
   margin: 0 auto;
   padding: 24px;
-  padding-top: 17vh;
 }
 .hero h1 {
   margin: 0 0 8px;
@@ -38,38 +31,31 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 16px;
-  margin-top: 20px;
 }
 .card {
-  border: 1px solid #e6e6e6;
-  border-radius: 12px;
+  border: 2px solid black; /* match ItemCard */
+  border-radius: 20px; /* match ItemCard */
   padding: 16px;
   background: #fff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.06);
 }
 .tip {
   font-size: 0.9rem;
   opacity: 0.9;
 }
 
-/* Examples */
-.example {
-  margin-top: 32px;
-}
 .figure {
   margin: 0;
   display: grid;
   justify-items: center; /* center image + caption */
   gap: 8px;
 }
-
-/* Prevent blurry upscaling: clamp image width and center it */
 .guideImage {
-  width: 95%;
-  max-width: 900px; /* <= adjust to your asset's real pixel width */
+  width: 100%;
+  max-width: 900px;
   height: auto;
   border: 1px solid #eee;
-  border-radius: 10px;
-  image-rendering: auto; /* let browser choose best; avoids pixelation */
+  border-radius: 12px;
 }
 
 /* Caption list */
@@ -92,13 +78,12 @@
   font-size: 12px;
 }
 
-/* D-value callout box with even padding + subtle background */
 .callout {
-  margin-top: 32px;
-  border: 1px solid #e6e6e6;
-  border-radius: 12px;
-  background: #fafafa; /* slightly distinct from page */
-  padding: 16px; /* even padding around title and content */
+  border: 2px solid black;
+  border-radius: 20px;
+  background: #fff;
+  padding: 16px;
+  margin-top: 10px;
 }
 .callout h2 {
   margin: 0 0 10px;
@@ -110,7 +95,7 @@
   align-items: center;
 }
 .dImage {
-  width: 200px;
+  width: min(260px, 100%);
   height: auto;
 }
 
