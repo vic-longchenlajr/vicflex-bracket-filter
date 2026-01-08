@@ -4,7 +4,7 @@ import Navbar from "@/nav-bar";
 import Displaycolumn from "@/display-column";
 
 export default function Home() {
-  let imageSrc = "/icon.ico";
+  let imageSrc = "/favicon.ico";
   return (
     <>
       <Head>
