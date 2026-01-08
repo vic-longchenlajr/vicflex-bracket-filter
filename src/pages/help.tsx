@@ -12,7 +12,7 @@ export default function Help() {
   return (
     <>
       <Head>
-        <title>Help | VicFlex Bracket Filter v0.1.5</title>
+        <title>Help | VicFlex Bracket Filter v1.0.0</title>
       </Head>
       <Navbar />
 
