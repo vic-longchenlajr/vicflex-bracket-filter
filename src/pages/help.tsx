@@ -14,7 +14,7 @@ export default function Help() {
     <>
       <Head>
         <title>Help | VicFlex Bracket Filter v1.0.0</title>
-        <link rel="icon" href={imageSrc} type="image/png" />
+        <link rel="icon" href={imageSrc} type="image/x-icon" />
       </Head>
       <Navbar />
 

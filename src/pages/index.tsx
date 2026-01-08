@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <Head>
         <title>Home | VicFlex Bracket Filter v1.0.0</title>
-        <link rel="icon" href={imageSrc} type="image/png" />
+        <link rel="icon" href={imageSrc} type="image/x-icon" />
       </Head>
       <Navbar />
       <div className={styles.body}>
