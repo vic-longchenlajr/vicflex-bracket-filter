@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./styles/filtercolumn.module.css";
 
 const filterOptions = {
-  Product: ["VS1", "AH1/2"],
+  Product: ["VS1", "AH1/2", "AQD-M", "GH1-C2C"],
   Reducer: [
     "VS1",
     '5-3/4" Straight',
@@ -10,11 +10,14 @@ const filterOptions = {
     "Low profile Short Elbow",
     "Standard Long Elbow",
     "Standard Short Elbow",
+    "AQD-M",
+    '12" N/148',
   ],
   "Sprinkler Type": [
     "Concealed Pendent",
     "Sleeve & Skirt Pendent",
     "Recessed Pendent",
+    "Pendent",
   ],
   "Bracket Type": [
     "VB2",
@@ -26,12 +29,20 @@ const filterOptions = {
     "AB5",
     "AB7",
     "AB11",
+    "AQD Round 8-12",
+    "AQD Round 13-16",
+    "AQD Round 17-22",
+    "AQD Flat",
+    "AB6-W",
   ],
   "Grid Type": [
     "T Grid",
     "Data Center Grid",
     "Wood/Metal Joist",
     "Hat Channel",
+    "Round Metal Duct",
+    "Square Metal Duct",
+    "Insulated Metal Panel",
   ],
 };
 

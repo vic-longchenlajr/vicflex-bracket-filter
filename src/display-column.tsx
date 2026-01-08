@@ -33,7 +33,7 @@ const DB_PATH = "database";
 const IMG_PATH = "screenshots";
 
 // change only the file name when you update the spreadsheet
-const FILE_NAME = "VicFlex-Bracket-Calculator-Values-10.28.25.xlsx";
+const FILE_NAME = "VicFlex-Bracket-Calculator-Values-1.7.26.xlsx";
 
 // const REMOTE_XLSX_URL = `${REMOTE_BASE}/${DB_PATH}/${FILE_NAME}`;
 // const REMOTE_IMG_BASE = `${REMOTE_BASE}/${IMG_PATH}/`;

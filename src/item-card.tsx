@@ -112,21 +112,42 @@ const ItemCard = (props: ItemCardProps) => {
       document.body.style.overflow = "";
     };
   }, [expanded, notesOpen]);
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        if (notesOpen) setNotesOpen(false);
+        if (expanded) setExpanded(false);
+      }
+    };
+
+    if (expanded || notesOpen) window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [expanded, notesOpen]);
 
   return (
     <>
       <div className={styles.card}>
         <div className={styles.topRow}>
           <div className={styles.info}>
-            <div className={styles.actions}>
-              <img
-                src={assetsBase + "expand.png"}
-                alt="Expand"
-                className={styles.expandIcon}
-                width={24}
-                height={24}
+            <div className={styles.actionsRow}>
+              <button
+                type="button"
+                className={styles.iconBtn}
                 onClick={toggleExpand}
-              />
+                aria-haspopup="dialog"
+                aria-expanded={expanded}
+                aria-label={
+                  expanded ? "Close expanded view" : "Open expanded view"
+                }
+              >
+                <img
+                  src={assetsBase + "expand.png"}
+                  alt=""
+                  className={styles.expandIcon}
+                  width={24}
+                  height={24}
+                />
+              </button>
               {hasNotes && (
                 <button
                   type="button"
@@ -277,7 +298,7 @@ const ItemCard = (props: ItemCardProps) => {
           onClick={() => setNotesOpen(false)}
         >
           <div
-            className={styles.modalContent}
+            className={`${styles.modalContent} ${styles.notesModalContent}`}
             role="dialog"
             aria-modal="true"
             aria-labelledby="notes-title"
@@ -294,7 +315,8 @@ const ItemCard = (props: ItemCardProps) => {
                 ×
               </button> */}
             </div>
-            <ul className={styles.notesList}>
+
+            <ul className={`${styles.notesList} ${styles.notesListScroll}`}>
               {notes.map((n, i) => (
                 <li key={i}>{n}</li>
               ))}

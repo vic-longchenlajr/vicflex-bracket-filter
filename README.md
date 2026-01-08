@@ -19,4 +19,4 @@ run
 2. open folder
 3. double-click on vicflex-bracket-filter
 
-Internal Deployment Contact: PPeter Briggeman
+Internal Deployment Contact: Peter Briggeman

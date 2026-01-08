@@ -22,7 +22,7 @@ const Searchbar = ({ onSearch }: any) => {
           type="text"
           value={query}
           onChange={handleChange}
-          placeholder='Search by "D" value'
+          placeholder='Search by "D" value (inches or millimeters)'
           className={styles.searchInput}
         />
         <span className={styles.searchIcon}>🔍</span>
