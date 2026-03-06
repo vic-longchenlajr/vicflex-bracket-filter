@@ -4,7 +4,8 @@ import Navbar from "@/nav-bar";
 import Displaycolumn from "@/display-column";
 
 export default function Home() {
-  let imageSrc = "/favicon.ico";
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  let imageSrc = `${basePath}/favicon.ico`;
   return (
     <>
       <Head>

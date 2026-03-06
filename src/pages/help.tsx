@@ -4,10 +4,11 @@ import Navbar from "@/nav-bar";
 
 const Pin = ({ n }: { n: number }) => <span className={styles.pin}>{n}</span>;
 
-const example1 = "/resources/example1.png";
-const example2 = "/resources/example2.png";
-const dval2 = "/resources/dval2.png";
-let imageSrc = "/favicon.ico";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const example1 = `${basePath}/resources/example1.png`;
+const example2 = `${basePath}/resources/example2.png`;
+const dval2 = `${basePath}/resources/dval2.png`;
+let imageSrc = `${basePath}/favicon.ico`;
 
 export default function Help() {
   return (

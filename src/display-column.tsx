@@ -27,7 +27,7 @@ interface BracketConfig {
 const REMOTE_BASE =
   "https://vortex-bom.victaulicmobile.com/us-config/bracket-filter";
 
-const LOCAL_BASE = "/"; //public folder
+const LOCAL_BASE = (process.env.NEXT_PUBLIC_BASE_PATH || "") + "/";
 
 const DB_PATH = "database";
 const IMG_PATH = "screenshots";

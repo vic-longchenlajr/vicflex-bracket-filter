@@ -98,7 +98,8 @@ const ItemCard = (props: ItemCardProps) => {
 
   const toggleExpand = () => setExpanded((p) => !p);
 
-  const assetsBase = "/resources/";
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  const assetsBase = `${basePath}/resources/`;
 
   const notes = useMemo(
     () => buildNotes(props.product, props.sprinklerType),

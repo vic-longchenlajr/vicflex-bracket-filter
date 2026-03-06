@@ -13,7 +13,8 @@ const Searchbar = ({ onSearch }: any) => {
 
   const toggleModal = () => setShowModal(!showModal);
 
-  let imageSrc = "/resources/dval.png";
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  let imageSrc = `${basePath}/resources/dval.png`;
 
   return (
     <div className={styles.searchDiv}>
