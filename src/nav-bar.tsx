@@ -6,7 +6,8 @@ import Link from "next/link";
 import styles from "./styles/navbar.module.css";
 
 const Navbar = () => {
-  const imageSrc = "/resources/";
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  const imageSrc = `${basePath}/resources/`;
 
   const [menuOpen, setMenuOpen] = useState(false);
 
