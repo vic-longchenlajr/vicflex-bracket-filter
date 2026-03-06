@@ -8,7 +8,9 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Home | VicFlex Bracket Filter v1.0.0</title>
+        <title>
+          Home | VicFlex Bracket Filter v{process.env.NEXT_PUBLIC_APP_VERSION}
+        </title>
         <link rel="icon" href={imageSrc} type="image/x-icon" />
       </Head>
       <Navbar />

@@ -3,7 +3,7 @@ const path = require("path");
 module.exports = {
   packagerConfig: {
     asar: true,
-    icon: "./public/icon", // optional
+    icon: "./public/favicon", // optional
     extraResources: [
       {
         from: path.resolve(__dirname, "out"), // your static build output

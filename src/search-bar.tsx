@@ -41,6 +41,14 @@ const Searchbar = ({ onSearch }: any) => {
             className={styles.modalContent}
             onClick={(e) => e.stopPropagation()}
           >
+            <button
+              type="button"
+              className={styles.closeBtn}
+              aria-label="Close notes"
+              onClick={() => setShowModal(false)}
+            >
+              ×
+            </button>
             <img
               src={imageSrc}
               alt='What is the "D" value?'

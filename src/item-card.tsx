@@ -76,17 +76,17 @@ function buildNotes(product: string, sprinklerType: string): string[] {
 
   if (isRecessed) {
     notes.push(
-      'For recessed pendent sprinklers: the values provided are for ¾" adjustment escutcheon.'
+      'For recessed pendent sprinklers: the values provided are for ¾" adjustment escutcheon.',
     );
   }
   if (isAH && isRecessed) {
     notes.push(
-      "For AH1/AH2 with recessed pendent sprinklers: the values provided are for V2708 sprinkler; values may be slightly different for other recessed pendent sprinklers."
+      "For AH1/AH2 with recessed pendent sprinklers: the values provided are for V2708 sprinkler; values may be slightly different for other recessed pendent sprinklers.",
     );
   }
   if (isAH && isConcealed) {
     notes.push(
-      "For AH1/AH2 with concealed pendent sprinklers: the values provided are for the V3802 sprinkler; values may be slightly different for other concealed pendent sprinklers."
+      "For AH1/AH2 with concealed pendent sprinklers: the values provided are for the V3802 sprinkler; values may be slightly different for other concealed pendent sprinklers.",
     );
   }
   return notes;
@@ -102,7 +102,7 @@ const ItemCard = (props: ItemCardProps) => {
 
   const notes = useMemo(
     () => buildNotes(props.product, props.sprinklerType),
-    [props.product, props.sprinklerType]
+    [props.product, props.sprinklerType],
   );
   const hasNotes = notes.length > 0;
   useEffect(() => {
@@ -218,6 +218,18 @@ const ItemCard = (props: ItemCardProps) => {
             className={styles.modalContent}
             onClick={(e) => e.stopPropagation()}
           >
+            <div className={styles.modalHeader}>
+              <h3 id="notes-title"></h3>
+              <button
+                type="button"
+                className={styles.closeBtn}
+                aria-label="Close notes"
+                onClick={() => setExpanded(false)}
+              >
+                ×
+              </button>
+            </div>
+
             <div className={styles.modalHeaderArea}>
               <div className={styles.modalHeaderRow}>
                 <div className={styles.modalInfo}>
@@ -306,14 +318,14 @@ const ItemCard = (props: ItemCardProps) => {
           >
             <div className={styles.modalHeader}>
               <h3 id="notes-title">Important Notes</h3>
-              {/* <button
+              <button
                 type="button"
                 className={styles.closeBtn}
                 aria-label="Close notes"
                 onClick={() => setNotesOpen(false)}
               >
                 ×
-              </button> */}
+              </button>
             </div>
 
             <ul className={`${styles.notesList} ${styles.notesListScroll}`}>

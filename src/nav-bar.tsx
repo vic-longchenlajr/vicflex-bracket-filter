@@ -29,7 +29,9 @@ const Navbar = () => {
           className={styles.logo}
           priority
         />
-        <span className={styles.title}>Bracket Filter v1.0.0</span>
+        <span className={styles.title}>
+          Bracket Filter v{process.env.NEXT_PUBLIC_APP_VERSION}
+        </span>
       </div>
 
       {/* Desktop Navigation */}

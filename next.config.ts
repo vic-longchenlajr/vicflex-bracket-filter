@@ -1,13 +1,16 @@
 /** @type {import('next').NextConfig} */
-const isProd = process.env.NODE_ENV === "production";
+const pkg = require("./package.json");
 
 const nextConfig = {
   output: "export",
-  distDir: "build", // optional: clean separation for .next
+  distDir: "build",
+  trailingSlash: true,
   images: {
     unoptimized: true,
   },
-  assetPrefix: isProd ? "./" : "",
-  trailingSlash: true,
+  env: {
+    NEXT_PUBLIC_APP_VERSION: pkg.version,
+  },
 };
+
 module.exports = nextConfig;

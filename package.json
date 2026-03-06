@@ -1,9 +1,9 @@
 {
   "name": "vicflex-bracket-filter",
-  "version": "0.1.5",
+  "version": "1.0.0",
   "private": true,
   "main": "main.js",
-  "description": "Portable Bracket Calculator for VicFlex Bracket Configurations using Next.js and Electron.",
+  "description": "Portable Bracket Filter for VicFlex Bracket Configurations using Next.js and Electron.",
   "author": "Chenla Long, Jr",
   "scripts": {
     "dev": "next dev",
@@ -11,6 +11,7 @@
     "make": "npm run build && electron-forge make",
     "package": "npm run build && electron-forge package",
     "start": "electron .",
+    "release": "ts-node --transpile-only --project tools/tsconfig.tools.json tools/release.ts",
     "clean": "node -e \"require('fs').rmSync('out',{recursive:true,force:true}); require('fs').rmSync('build',{recursive:true,force:true});\""
   },
   "dependencies": {
@@ -37,6 +38,7 @@
     "@types/react-dom": "^19",
     "electron": "36.3.2",
     "fs-extra": "^11.3.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }

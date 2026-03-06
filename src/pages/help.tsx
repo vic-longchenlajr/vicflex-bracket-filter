@@ -13,7 +13,9 @@ export default function Help() {
   return (
     <>
       <Head>
-        <title>Help | VicFlex Bracket Filter v1.0.0</title>
+        <title>
+          Help | VicFlex Bracket Filter v{process.env.NEXT_PUBLIC_APP_VERSION}
+        </title>
         <link rel="icon" href={imageSrc} type="image/x-icon" />
       </Head>
       <Navbar />
@@ -138,7 +140,7 @@ export default function Help() {
               "D" is the distance from the finished ceiling tile or panel to the
               top of the ceiling grid that the VicFlex bracket is mounted to.
               This information is typically found in the ceiling submittal
-              package for a project.{" "}
+              package for a project.
             </p>
           </div>
         </section>
