@@ -2,9 +2,10 @@ _Web Deployment_
 Build + release for web deployment
 
 0. Confirm database/ file is the most up to date.
-1. `npm run build`
-2. Zip the output folder created in /build/
-3. Push changes to github/package for deployment
+1. `npm run release`
+2. Address uncommitted changes, update version number.
+3. Static build pushed and auto-documented in https://github.com/Victaulic-Global-Process-Technology/vicflex-bracket-filter-release
+4. Source changes pushed to https://github.com/vic-longchenlajr/vicflex-bracket-filter
 
 _Legacy Electron Build_
 Updating deployment build + release for download
