@@ -1,6 +1,6 @@
 {
   "name": "vicflex-bracket-filter",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "main": "main.js",
   "description": "Portable Bracket Filter for VicFlex Bracket Configurations using Next.js and Electron.",
