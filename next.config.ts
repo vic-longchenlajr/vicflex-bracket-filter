@@ -4,6 +4,8 @@ const pkg = require("./package.json");
 const nextConfig = {
   output: "export",
   distDir: "build",
+  basePath: "/vicflex-bracket-filter",
+  assetPrefix: "/vicflex-bracket-filter/",
   trailingSlash: true,
   images: {
     unoptimized: true,
